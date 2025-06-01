@@ -83,7 +83,7 @@
   /* Only the body should scroll; header stays pinned */
   overflow-x: auto  !important;
   overflow-y: auto  !important;
-  max-height: 600px !important; /* ← increased to make the scrollable window taller */
+  max-height: 600px !important; /* ← adjust as desired */
 }
 #single_rfq_table_wrapper .dataTables_scrollHead {
   position: sticky       !important;
@@ -119,7 +119,10 @@
       by your JavaScript columnDefs). 
    --------------------------------------------------------------------------------- */
 #single_rfq_table th:nth-child(5),
-#single_rfq_table td:nth-child(5) {
+#single_rfq_table td:nth-child(5),
+/* also target cloned header/body tables */
+#single_rfq_table_wrapper .dataTables_scrollHeadInner table th:nth-child(5),
+#single_rfq_table_wrapper .dataTables_scrollBody table td:nth-child(5) {
   width:     80px !important;
   max-width: 80px !important;
 }
@@ -128,24 +131,36 @@
    J) Slightly increase width of 7th (“Valid Quotes”) and 9th (“Currency”) columns;
       make 11th (“Price to Client”) and 12th (“Notes”) larger.
    --------------------------------------------------------------------------------- */
+/* Column 7 */
 #single_rfq_table th:nth-child(7),
-#single_rfq_table td:nth-child(7) {
+#single_rfq_table td:nth-child(7),
+#single_rfq_table_wrapper .dataTables_scrollHeadInner table th:nth-child(7),
+#single_rfq_table_wrapper .dataTables_scrollBody table td:nth-child(7) {
   width:     100px !important;
   max-width: 100px !important;
 }
+/* Column 9 */
 #single_rfq_table th:nth-child(9),
-#single_rfq_table td:nth-child(9) {
+#single_rfq_table td:nth-child(9),
+#single_rfq_table_wrapper .dataTables_scrollHeadInner table th:nth-child(9),
+#single_rfq_table_wrapper .dataTables_scrollBody table td:nth-child(9) {
   width:     100px !important;
   max-width: 100px !important;
 }
+/* Column 11 (Price to Client) */
 #single_rfq_table th:nth-child(11),
-#single_rfq_table td:nth-child(11) {
-  width:     300px !important; /* “Price to Client” */
+#single_rfq_table td:nth-child(11),
+#single_rfq_table_wrapper .dataTables_scrollHeadInner table th:nth-child(11),
+#single_rfq_table_wrapper .dataTables_scrollBody table td:nth-child(11) {
+  width:     300px !important; /* doubled */
   max-width: 300px !important;
 }
+/* Column 12 (Notes) */
 #single_rfq_table th:nth-child(12),
-#single_rfq_table td:nth-child(12) {
-  width:     300px !important; /* “Notes” doubled */
+#single_rfq_table td:nth-child(12),
+#single_rfq_table_wrapper .dataTables_scrollHeadInner table th:nth-child(12),
+#single_rfq_table_wrapper .dataTables_scrollBody table td:nth-child(12) {
+  width:     300px !important; /* doubled */
   max-width: 300px !important;
 }
 
