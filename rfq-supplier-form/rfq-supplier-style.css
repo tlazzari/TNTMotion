@@ -1,0 +1,110 @@
+/* Container */
+#rfq-supplier-manager {
+  display: block;
+  width: 120%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+/* Tables fill container and wrap text */
+#rfq-supplier-manager table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+#rfq-supplier-manager th,
+#rfq-supplier-manager td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+  vertical-align: top;
+}
+
+/* Sticky headers for both tables */
+#rfq-product-table thead th,
+#supplier-table thead th {
+  position: sticky;
+  top: 0;
+  background: #0073aa !important;
+  color: #fff !important;
+  z-index: 5;
+}
+#rfq-product-table thead,
+#supplier-table thead {
+  display: table-header-group;
+}
+
+/* Zebra stripes & hover */
+#rfq-product-table tbody tr:nth-child(even),
+#supplier-table tbody tr:nth-child(even) {
+  background: #f2f2f2;
+}
+#rfq-supplier-manager tbody tr:hover {
+  background: #e6f7ff;
+}
+
+/* Supplier ID column narrower */
+#supplier-table th:nth-child(1),
+#supplier-table td:nth-child(1) {
+  width: 60px;    /* adjust as needed */
+  white-space: nowrap;
+}
+
+/* Notes column wider */
+#supplier-table th:nth-child(3),
+#supplier-table td:nth-child(3) {
+  width: 300px;   /* adjust as needed */
+}
+
+/* Highlight already-assigned rows */
+.assigned-row {
+  background: #ffd6d6 !important;
+}
+
+/* Buttons */
+#rfq-supplier-manager button {
+  background: #0073aa;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#rfq-supplier-manager button:hover {
+  background: #005f8d;
+}
+
+/* Form fields */
+#rfq-supplier-manager input,
+#rfq-supplier-manager textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+#rfq-supplier-manager input:focus,
+#rfq-supplier-manager textarea:focus {
+  border-color: #0073aa;
+  outline: none;
+}
+
+/* Messages */
+#rfq-supplier-manager .message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+#rfq-supplier-manager .message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

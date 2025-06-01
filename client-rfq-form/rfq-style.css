@@ -1,0 +1,53 @@
+/* ---------------------------------------------------------------------------------
+   B) Force the main table to size itself (auto layout) and collapse borders
+   --------------------------------------------------------------------------------- */
+#single_rfq_table {
+  width:           100%    !important;
+  table-layout:    auto    !important;   /* ← changed from “fixed” */
+  border-collapse: collapse;
+}
+
+/* ---------------------------------------------------------------------------------
+   C) Horizontally scroll wrapper
+   --------------------------------------------------------------------------------- */
+.rfq-table-wrapper {
+  overflow-x: auto;
+}
+
+/* ( … other existing rules … ) */
+
+/* ---------------------------------------------------------------------------------
+   I) Force the 5th column (“Quantity”) to be exactly 80px wide
+   --------------------------------------------------------------------------------- */
+#single_rfq_table th:nth-child(5),
+#single_rfq_table td:nth-child(5) {
+  width:     80px !important;
+  max-width: 80px !important;
+}
+
+/* ---------------------------------------------------------------------------------
+   J) Cap the <input> inside the Quantity column so it never overflows
+   --------------------------------------------------------------------------------- */
+#single_rfq_table td input.edit-quantity {
+  max-width: 80px  !important;
+  width:     100%  !important;  /* Fill the cell but never exceed 80px */
+  box-sizing: border-box;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Pin DataTables’ cloned THEAD (scrollHead) to the top of the viewport
+   ─────────────────────────────────────────────────────────────────────────── */
+#single_rfq_table_wrapper .dataTables_scrollHead {
+  position: sticky;
+  top:      0;
+  z-index:  20;
+  background: #ffffff;
+}
+
+/* Ensure the <th> inside that sticky head matches your styling */
+#single_rfq_table_wrapper .dataTables_scrollHeadInner table thead th {
+  background:    #ffffff;
+  padding:       6px 8px;
+  border-bottom: 1px solid #ddd;
+  text-align:    left;
+}

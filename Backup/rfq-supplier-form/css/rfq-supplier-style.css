@@ -1,0 +1,128 @@
+/* General Container */
+#rfq-supplier-manager {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 1200px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* Headings */
+#rfq-supplier-manager h1,
+#rfq-supplier-manager h2,
+#rfq-supplier-manager h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Buttons */
+#rfq-supplier-manager button {
+    background-color: #0073aa;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#rfq-supplier-manager button:hover {
+    background-color: #005f8d;
+}
+
+/* Tables */
+#rfq-supplier-manager table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#rfq-supplier-manager th,
+#rfq-supplier-manager td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#rfq-supplier-manager th {
+    background-color: #0073aa;
+    color: white;
+    font-weight: bold;
+}
+
+#rfq-supplier-manager tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#rfq-supplier-manager tr:hover {
+    background-color: #e6f7ff;
+}
+
+/* Form Fields */
+#rfq-supplier-manager input[type="text"],
+#rfq-supplier-manager input[type="number"],
+#rfq-supplier-manager input[type="date"],
+#rfq-supplier-manager textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+#rfq-supplier-manager input[type="text"]:focus,
+#rfq-supplier-manager input[type="number"]:focus,
+#rfq-supplier-manager input[type="date"]:focus,
+#rfq-supplier-manager textarea:focus {
+    border-color: #0073aa;
+    outline: none;
+}
+
+/* Submit Button */
+#rfq-supplier-manager .submit-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #0073aa;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#rfq-supplier-manager .submit-btn:hover {
+    background-color: #005f8d;
+}
+
+/* Hidden Sections */
+#rfq-supplier-manager .hidden {
+    display: none;
+}
+
+/* Error and Success Messages */
+#rfq-supplier-manager .message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    display: none;
+}
+
+#rfq-supplier-manager .message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#rfq-supplier-manager .message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

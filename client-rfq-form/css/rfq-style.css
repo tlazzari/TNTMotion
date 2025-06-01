@@ -1,0 +1,274 @@
+/* rfq-style.css */
+
+/* Basic form styling */
+.rfq-section {
+    margin-bottom: 20px;
+}
+
+.rfq-section h4 {
+    margin-bottom: 10px;
+}
+
+.rfq-field {
+    margin-bottom: 15px;
+    position: relative; /* To position suggestion containers correctly */
+}
+/* in your rfq-style.css */
+rfq-table-section {
+  overflow: visible;
+}
+
+/* only the table wrapper scrolls */
+.rfq-table-wrapper {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* make only the table’s <th> sticky */
+#single_rfq_table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;  /* keep your header opaque */
+  z-index: 10;
+}
+
+
+.rfq-field input[type="text"],
+.rfq-field input[type="number"],
+.rfq-field textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.rfq-submit {
+    padding: 10px 20px;
+    background-color: #0073aa;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.rfq-submit:hover {
+    background-color: #005177;
+}
+
+/* Suggestion container styling */
+.suggestions-container {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Success and error messages */
+.rfq-message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.rfq-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.rfq-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Warning messages */
+.rfq-warning {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Cancel button styling */
+.cancel-button {
+    padding: 5px 10px;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+/* Existing RFQs Table */
+#existing_rfqs_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#existing_rfqs_table th,
+#existing_rfqs_table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+#existing_rfqs_table th {
+    background-color: #f2f2f2;
+}
+
+.selected-rfq {
+    background-color: #d1ecf1;
+}
+
+/* Debug Logs */
+.rfq-debug-logs {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.ajax-debug-area {
+    margin-top: 20px;
+}
+
+.ajax-debug-area pre {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+}
+/* 1. Override the existing constrained layout */
+.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+    /* Remove or adjust properties as needed */
+    /* For example, reset margin */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: none !important;
+}
+
+/* 2. Style the RFQ Form Grid */
+.rfq-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: #fff; /* Optional: background color */
+    border: 1px solid #ccc; /* Optional: border */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+/* 3. Style individual columns */
+.rfq-form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 4. Style form fields */
+.rfq-form-grid .rfq-field {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 5. Style labels and inputs */
+.rfq-form-grid .rfq-field label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.rfq-form-grid .rfq-field input[type="text"],
+.rfq-form-grid .rfq-field input[type="number"],
+.rfq-form-grid .rfq-field input[type="date"],
+.rfq-form-grid .rfq-field textarea,
+.rfq-form-grid .rfq-field select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* 6. Style the "Add Another Product" button */
+#add_another_product {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #0073aa;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#add_another_product:hover {
+    background-color: #005177;
+}
+
+/* 7. Style the Submit Button */
+.rfq-submit {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.rfq-submit:hover {
+    background-color: #218838;
+}
+
+/* 8. Center the table container */
+#single_rfq_table_container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 20px 0; /* Adjust as needed */
+}
+
+/* 9. Style the table to have minimal margins and padding */
+#single_rfq_table {
+    width: 90%; /* Adjust width as needed */
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#single_rfq_table th,
+#single_rfq_table td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#single_rfq_table th {
+    background-color: #f2f2f2;
+}
+
+/* 10. Responsive Table */
+@media (max-width: 768px) {
+    #single_rfq_table {
+        width: 100%;
+    }
+}

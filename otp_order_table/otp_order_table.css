@@ -1,0 +1,149 @@
+/* 
+   Only hide nav if the body has .tnt-order-details-page. 
+   On all other pages, nav remains visible.
+*/
+.tnt-order-details-page nav {
+    display: none !important;
+}
+
+/* wrap your table in this to get an internal scrollbar */
+.order-table-wrapper {
+  max-height: 70vh;    /* or whatever fits your layout */
+  overflow-y: auto;
+}
+
+/* make all table headers stick to the top of that wrapper */
+.order-table-wrapper table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;     /* you’ll usually want to match your table’s header bg */
+  z-index: 2;           /* sit above your tbody rows */
+}
+
+/* optional: add a little box-shadow so it “pops” when you scroll */
+.order-table-wrapper table thead th {
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
+}
+
+/************************************************
+ * 2) Base Table Styling (applies to /order_table/ 
+ *    and the “tnt-order” pages).
+ ************************************************/
+.otp-table, .nested-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed; /* helps keep columns aligned if we use <colgroup> */
+}
+
+.otp-table th, .otp-table td,
+.nested-table th, .nested-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.printable-area {
+  max-width: 800px;
+  margin: 0 auto;
+}
+@media print {
+  /* hide everything except .printable-area */
+  body * { visibility: hidden; }
+  .printable-area, .printable-area * { visibility: visible; }
+  .printable-area { position: absolute; top: 0; left: 0; width: 100%; }
+}
+
+.otp-table th, .nested-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/************************************************
+ * 3) “Add Order Item” row styling 
+ ************************************************/
+.new-order-item input,
+.new-order-item select {
+  width: 90%;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.save-order-item,
+.cancel-order-item {
+  padding: 5px 10px;
+  margin-right: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+}
+
+.save-order-item {
+  background-color: #4CAF50;
+}
+.save-order-item:hover {
+  background-color: #45a049;
+}
+
+.cancel-order-item {
+  background-color: #f44336;
+}
+.cancel-order-item:hover {
+  background-color: #e53935;
+}
+
+/************************************************
+ * 4) Basic layout for “order details” top section
+ ************************************************/
+.order-details-container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 75%;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.top-left, .top-right {
+  font-size: 14px;
+}
+
+.company-logo {
+  text-align: right;
+  margin-top: 20px;
+}
+.company-logo img {
+  width: 4cm;
+  height: 4cm;
+}
+
+/************************************************
+ * 5) Additional info / bottom-info 
+ ************************************************/
+.bottom-info {
+  margin-top: 20px;
+}
+.bottom-info h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.bottom-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/************************************************
+ * 6) Responsive adjustments 
+ ************************************************/
+@media screen and (max-width: 768px) {
+  .top-section {
+    flex-direction: column;
+  }
+  .top-left, .top-right {
+    width: 100%;
+  }
+}

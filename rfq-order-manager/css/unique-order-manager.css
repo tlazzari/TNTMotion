@@ -1,0 +1,268 @@
+
+
+#rfq_supplier_suggestions ul,
+#rfq_client_suggestions ul {
+    display: none; /* Initially hidden */
+    list-style-type: none; /* Remove default list styling */
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 9999;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Make the suggestions visible when the 'active' class is added */
+#rfq_supplier_suggestions ul.active,
+#rfq_client_suggestions ul.active {
+    display: block !important; /* Ensure it's visible when active */
+}
+
+.suggestion-list {
+    display: none; /* Initially hidden */
+    list-style-type: disc;
+    margin: 0;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.suggestion-list li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.suggestion-list li:hover {
+    background-color: #f0f0f0;
+}
+
+
+#rfq_supplier_suggestions,
+#rfq_client_suggestions {
+    position: relative;
+    width: 100%;
+}
+/* Container Styling */
+#unique-order-manager {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+#unique-order-manager h2,
+#unique-order-manager h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333333;
+}
+
+/* Form Styling */
+.rfq-form .form-group {
+    margin-bottom: 20px;
+}
+
+.rfq-form label {
+    font-weight: bold;
+    color: #555555;
+}
+
+.rfq-form input[type="text"],
+.rfq-form input[type="number"],
+.rfq-form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.rfq-form input[type="text"]:focus,
+.rfq-form input[type="number"]:focus,
+.rfq-form textarea:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+.rfq-form button[type="submit"] {
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.rfq-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Suggestions Dropdown Styling */
+#rfq_supplier_suggestions,
+#rfq_client_suggestions {
+    position: relative; /* Position relative to the input field */
+}
+
+#rfq_supplier_suggestions ul,
+#rfq_client_suggestions ul {
+    max-height: 200px;
+    overflow-y: auto;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other elements */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: absolute;
+    width: 100%; /* Match the input field's width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    display: none; /* Initially hidden */
+}
+
+#rfq_supplier_suggestions ul.active,
+#rfq_client_suggestions ul.active {
+    display: block; /* Show when active */
+}
+
+#rfq_supplier_suggestions li,
+#rfq_client_suggestions li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+#rfq_supplier_suggestions li:last-child,
+#rfq_client_suggestions li:last-child {
+    border-bottom: none;
+}
+
+#rfq_supplier_suggestions li:hover,
+#rfq_client_suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Table Styling */
+/* Ensure the table takes up full width */
+#unique-order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    table-layout: auto;  /* Adjust table layout */
+}
+
+#unique-order-table th,
+#unique-order-table td {
+    border: 1px solid #dddddd;
+    padding: 12px 15px;
+    text-align: center;
+    word-wrap: break-word; /* Allow long words to break and fit within the cell */
+    max-width: 200px;  /* Ensure column widths don't get too large */
+}
+
+#unique-order-table th {
+    background-color: #f2f2f2;
+    color: #333333;
+}
+
+#unique-order-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#unique-order-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    #unique-order-table {
+        width: 100%;
+        overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
+        display: block;
+    }
+
+    #unique-order-table th,
+    #unique-order-table td {
+        white-space: nowrap; /* Prevent text from wrapping on small screens */
+    }
+}
+
+.save-changes-button,
+.cancel-changes-button {
+    margin: 2px;
+}
+
+.save-changes-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-changes-button:hover {
+    background-color: #0056b3;
+}
+
+.cancel-changes-button {
+    background-color: #6c757d;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-changes-button:hover {
+    background-color: #5a6268;
+}
+
+/* Toast Notification */
+.toast {
+    width: 300px;
+}
+
+/* Hide number input arrows for Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide number input arrows for Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Optional: Adjust input padding to ensure text isn't overlapped */
+.editable-field input[type="number"] {
+    padding-right: 10px; /* Adjust as needed */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #unique-order-manager {
+        padding: 10px;
+    }
+
+    .rfq-form .form-row {
+        flex-direction: column;
+    }
+
+    .rfq-form .form-group {
+        width: 100%;
+    }
+
+    .suggestions-box {
+        width: 100%;
+    }
+}
