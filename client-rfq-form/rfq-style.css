@@ -1,23 +1,122 @@
+/* =============================================================================
+   rfq-style.css
+   ============================================================================= */
+
+/* ───────────────────────────────────────────────────────────────────────────
+   1) Two-column layout for the RFQ form
+   ─────────────────────────────────────────────────────────────────────────── */
+.rfq-form-container {
+  padding: 20px; /* optional */
+}
+.rfq-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px; /* space between columns */
+}
+.rfq-form-column { /* each column will auto-stretch */ }
+.rfq-section {
+  margin-bottom: 20px; /* space between sections in a column */
+}
+.rfq-field {
+  margin-bottom: 12px; /* space between each label+input/textarea/select */
+}
+.rfq-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.rfq-field input[type="text"],
+.rfq-field input[type="number"],
+.rfq-field textarea,
+.rfq-field select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 /* ---------------------------------------------------------------------------------
-   B) Force the main table to size itself (auto layout) and collapse borders
+   B) Force the main table to use auto layout and collapse borders
    --------------------------------------------------------------------------------- */
 #single_rfq_table {
   width:           100%    !important;
-  table-layout:    auto    !important;   /* ← changed from “fixed” */
+  table-layout:    auto    !important; /* was “fixed” */
   border-collapse: collapse;
 }
 
 /* ---------------------------------------------------------------------------------
    C) Horizontally scroll wrapper
    --------------------------------------------------------------------------------- */
+/* Override “overflow-x: auto” here so it doesn’t clip a sticky header */
 .rfq-table-wrapper {
-  overflow-x: auto;
+  overflow-x: visible !important;
 }
 
-/* ( … other existing rules … ) */
+/* ---------------------------------------------------------------------------------
+   D) DataTables “scrollX: true” wrapping: ensure inner tables size to contents
+   --------------------------------------------------------------------------------- */
+#single_rfq_table_wrapper .dataTables_scrollHeadInner table,
+#single_rfq_table_wrapper .dataTables_scrollBody table {
+  table-layout: auto !important; /* was “fixed” */
+  width:        100%   !important;
+}
+
+/* ---------------------------------------------------------------------------------
+   E) Wipe out any inline widths that DataTables injected, so our rules “win”
+   --------------------------------------------------------------------------------- */
+#single_rfq_table th[style],
+#single_rfq_table td[style] {
+  width:     auto    !important;
+  max-width: none    !important;
+}
+
+/* ---------------------------------------------------------------------------------
+   F) Make the DataTables header container sticky at the very top of the viewport.
+      This pins the cloned <thead> so it never scrolls away.
+   --------------------------------------------------------------------------------- */
+#single_rfq_table_wrapper .dataTables_scroll {
+  /* Allow the sticky header to “escape” its parent’s clipping */
+  overflow: visible !important;
+}
+#single_rfq_table_wrapper .dataTables_scrollBody {
+  /* Only the body should scroll; header stays pinned */
+  overflow-x: auto  !important;
+  overflow-y: auto  !important;
+  max-height: 600px !important; /* ← increased to make the scrollable window taller */
+}
+#single_rfq_table_wrapper .dataTables_scrollHead {
+  position: sticky       !important;
+  top:      0            !important;
+  z-index:  30           !important; /* Ensure it stays above everything */
+  background: #ffffff    !important;
+}
+
+/* ---------------------------------------------------------------------------------
+   G) Style the actual <th> cells inside that sticky header
+   --------------------------------------------------------------------------------- */
+#single_rfq_table_wrapper .dataTables_scrollHeadInner table thead th {
+  padding:       6px 8px         !important;
+  border-bottom: 1px solid #ddd  !important;
+  text-align:    left            !important;
+  background:    #ffffff         !important;  /* Match the container’s bg */
+}
+
+/* ---------------------------------------------------------------------------------
+   H) General styling for ALL <th> and <td> in the RFQ table
+   --------------------------------------------------------------------------------- */
+#single_rfq_table th,
+#single_rfq_table td {
+  padding:    6px 8px;
+  border:     1px solid #ddd;
+  text-align: left;
+  word-wrap:  break-word;  /* Wrap long text rather than expand cells */
+}
 
 /* ---------------------------------------------------------------------------------
    I) Force the 5th column (“Quantity”) to be exactly 80px wide
+      (only quantity is adjusted; all other columns revert to auto unless overridden
+      by your JavaScript columnDefs). 
    --------------------------------------------------------------------------------- */
 #single_rfq_table th:nth-child(5),
 #single_rfq_table td:nth-child(5) {
@@ -26,7 +125,32 @@
 }
 
 /* ---------------------------------------------------------------------------------
-   J) Cap the <input> inside the Quantity column so it never overflows
+   J) Slightly increase width of 7th (“Valid Quotes”) and 9th (“Currency”) columns;
+      make 11th (“Price to Client”) and 12th (“Notes”) larger.
+   --------------------------------------------------------------------------------- */
+#single_rfq_table th:nth-child(7),
+#single_rfq_table td:nth-child(7) {
+  width:     100px !important;
+  max-width: 100px !important;
+}
+#single_rfq_table th:nth-child(9),
+#single_rfq_table td:nth-child(9) {
+  width:     100px !important;
+  max-width: 100px !important;
+}
+#single_rfq_table th:nth-child(11),
+#single_rfq_table td:nth-child(11) {
+  width:     300px !important; /* “Price to Client” */
+  max-width: 300px !important;
+}
+#single_rfq_table th:nth-child(12),
+#single_rfq_table td:nth-child(12) {
+  width:     300px !important; /* “Notes” doubled */
+  max-width: 300px !important;
+}
+
+/* ---------------------------------------------------------------------------------
+   K) Cap the <input> inside the Quantity column so it never overflows
    --------------------------------------------------------------------------------- */
 #single_rfq_table td input.edit-quantity {
   max-width: 80px  !important;
@@ -35,19 +159,21 @@
 }
 
 /* ───────────────────────────────────────────────────────────────────────────
-   Pin DataTables’ cloned THEAD (scrollHead) to the top of the viewport
+   2) Light-red background for “highlight-red” rows
    ─────────────────────────────────────────────────────────────────────────── */
-#single_rfq_table_wrapper .dataTables_scrollHead {
-  position: sticky;
-  top:      0;
-  z-index:  20;
-  background: #ffffff;
+.highlight-red {
+  background-color: #ffe6e6; /* very pale red */
+}
+/* Guarantee the red background spans full row */
+#single_rfq_table tbody tr.highlight-red td {
+  background-color: #ffe6e6;
 }
 
-/* Ensure the <th> inside that sticky head matches your styling */
-#single_rfq_table_wrapper .dataTables_scrollHeadInner table thead th {
-  background:    #ffffff;
-  padding:       6px 8px;
-  border-bottom: 1px solid #ddd;
-  text-align:    left;
+/* ───────────────────────────────────────────────────────────────────────────
+   3) Force inputs/selects in table cells to fill the column
+   ─────────────────────────────────────────────────────────────────────────── */
+#single_rfq_table td input,
+#single_rfq_table td select {
+  width: 100%;
+  box-sizing: border-box;
 }
